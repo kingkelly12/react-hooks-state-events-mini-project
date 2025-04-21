@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import App from "../components/App";
 import Task from "../components/Task";
 
+
 test("displays the task text", () => {
   render(<Task text={"text!"} category={"category!"} />);
   expect(screen.queryByText("text!")).toBeInTheDocument();
