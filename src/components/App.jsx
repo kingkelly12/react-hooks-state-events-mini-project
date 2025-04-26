@@ -2,17 +2,10 @@ import React, { useState } from "react";
 import TaskList from "./TaskList";
 import CategoryFilter from "./CategoryFilter";
 import NewTaskForm from "./NewTaskForm";
-
-const initialTasks = [
-  { id: 1, text: "Buy groceries", category: "Home" },
-  { id: 2, text: "Finish project", category: "Work" },
-  { id: 3, text: "Go for a run", category: "Fitness" },
-];
-
-const categories = ["All", "Home", "Work", "Fitness"]; // Define categories
+import { CATEGORIES, TASKS } from "../data";
 
 function App() {
-  const [tasks, setTasks] = useState(initialTasks);
+  const [tasks, setTasks] = useState(TASKS);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   function handleDeleteTask(taskId) {
@@ -35,12 +28,12 @@ function App() {
   return (
     <div className="App">
       <CategoryFilter
-        categories={categories}
+        categories={CATEGORIES}
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
       />
       <NewTaskForm
-        categories={categories.filter((cat) => cat !== "All")} // Exclude "All"
+        categories={CATEGORIES.filter((cat) => cat !== "All")} // Exclude "All"
         onTaskFormSubmit={handleTaskFormSubmit}
       />
       <TaskList tasks={filteredTasks} onDeleteTask={handleDeleteTask} />
